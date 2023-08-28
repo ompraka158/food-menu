@@ -1,0 +1,23 @@
+<div class="cart" *ngIf="cartData">
+  <div class="cart__description">
+    <div class="title">{{ cartData.About.Name }}</div>
+    <div class="area-name">{{ cartData.About.AreaName }}</div>
+  </div>
+  <ng-container
+    *ngFor="let menu of cartData.Menu; let i = index; let last = last"
+  >
+    <ng-container *ngFor="let dish of menu.Dishes">
+      <div class="cart-item" *ngIf="dish.selected">
+        <div>{{ dish.name }}</div>
+        <div class="count">
+          <app-add-item-btn
+            [counter]="dish.selected"
+            (itemAdd)="modifyCart('add', dish)"
+            (itemRemove)="modifyCart('remove', dish)"
+          ></app-add-item-btn>
+          <div class="price">{{ dish.selected * dish.price }}</div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>

@@ -1,0 +1,226 @@
+.restaurant {
+  max-width: 800px;
+  padding: 30px 15px;
+	margin-bottom: 60px;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    &__description {
+      .title {
+        font-size: 1.43rem;
+        font-weight: 600;
+        color: #282c3f;
+        margin-bottom: 8px;
+        text-transform: capitalize;
+      }
+      .sub-title {
+        font-size: 0.93rem;
+        color: #7e808c;
+        height: calc(0.93rem + 2px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 4px;
+        white-space: nowrap;
+      }
+      .area-name {
+        font-size: 0.93rem;
+        color: #7e808c;
+      }
+    }
+    .rating {
+      border: 1px solid #e9e9eb;
+      box-shadow: 0 1px 5px #f9f9f9;
+      border-radius: 6px;
+      text-align: center;
+      padding: 8px;
+      max-width: 100px;
+      float: right;
+      &__content {
+        color: #3d9b6d;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e9e9eb;
+        font-weight: 700;
+        margin-bottom: 8px;
+        display: block;
+        .icon-star {
+          padding-right: 5px;
+          &::before {
+            content: "\E938";
+            margin: 0;
+            padding: 0;
+            box-sizing: inherit;
+            -webkit-text-size-adjust: none;
+            -webkit-tap-highlight-color: transparent;
+            -ms-text-size-adjust: none;
+            outline: none;
+          }
+        }
+      }
+      &__label {
+        font-size: 11px;
+        color: #8b8d97;
+      }
+    }
+  }
+}
+
+.dish {
+  display: flex;
+  justify-content: space-between;
+  &__details {
+    max-width: calc(100% - 118px);
+    &__name {
+      margin-right: 4px;
+      font-size: 1.22rem;
+      font-weight: 500;
+      color: #3e4152;
+      word-break: break-word;
+    }
+    &__price {
+      -webkit-box-align: center;
+      align-items: center;
+      margin-top: 4px;
+      &::before {
+        content: "\20B9";
+        margin-right: 0.1rem;
+      }
+    }
+    &__description {
+      margin-top: 14px;
+      line-height: 1.3;
+      color: rgba(40, 44, 63, 0.45);
+      width: 70%;
+      letter-spacing: -0.3px;
+      font-size: 1rem;
+    }
+  }
+  &__image {
+    width: 118px;
+    height: 96px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-radius: 6px;
+    position: relative;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+    .add-btn {
+      position: absolute;
+      left: 15%;
+      bottom: -8px;
+    }
+  }
+}
+
+.veg {
+  &::before {
+    content: "\E997";
+  }
+  color: #0f8a65;
+  font-size: 1rem;
+  vertical-align: middle;
+  margin-top: -2px;
+  display: inline-block;
+}
+
+.nonVeg {
+  &::before {
+    content: "\E998";
+  }
+  color: #e43b4f;
+  font-size: 1rem;
+  vertical-align: middle;
+  margin-top: -2px;
+  display: inline-block;
+}
+
+.dashed-divider {
+  border-bottom: 0.5px dashed #d3d3d3;
+  height: 0.5px;
+  margin: 18px auto;
+  width: 100%;
+}
+
+.divider {
+  border-bottom: 0.5px solid #d3d3d3;
+  height: 0.5px;
+  margin: 24px auto;
+  width: 100%;
+}
+
+.section-divider {
+  height: 16px;
+  border-bottom: 16px solid #f1f1f6;
+}
+
+:host ::ng-deep {
+  .mat-expansion-panel {
+    margin-top: 16px;
+    box-shadow: none !important;
+    &-body {
+      padding: 16px 24px !important;
+    }
+  }
+  .mat-expansion-panel .mat-expansion-panel-header:hover {
+    background: none !important;
+  }
+}
+
+.bottom-btn {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2000;
+  width: 100%;
+  @media only screen and (min-width: 800px) {
+    width: 800px;
+    margin: 0 auto;
+  }
+  &__container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    .browse-menu {
+      width: 150px;
+      height: 40px;
+      border-radius: 30px;
+      background: #5d8ed5;
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3),
+        0 2px 1px 0 rgba(93, 141, 213, 0.2);
+      font-weight: 600;
+      font-size: 0.93rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+      z-index: 10;
+      cursor: pointer;
+      border: none;
+      margin-bottom: 25px;
+    }
+    .view-cart {
+      height: 48px;
+      width: calc(100% - 32px);
+      background: #60b246;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 16px;
+      .open {
+        cursor: pointer;
+      }
+    }
+  }
+}
+.price {
+  &::before {
+    content: "\20B9";
+    margin-right: 0.1rem;
+  }
+}

@@ -1,0 +1,77 @@
+<div *ngIf="menuData" class="restaurant">
+  <div class="restaurant__header">
+    <div class="restaurant__header__description">
+      <div class="title">{{ menuData.About.Name }}</div>
+      <div class="sub-title">{{ menuData.About.Cuisines.join(", ") }}</div>
+      <div class="area-name">{{ menuData.About.AreaName }}</div>
+    </div>
+    <div class="rating">
+      <div class="rating__content">
+        <span class="icon-star"></span>
+        <span>{{ menuData.About.Ratings }}</span>
+      </div>
+      <div class="rating__label">Ratings</div>
+    </div>
+  </div>
+  <div class="dashed-divider"></div>
+  <mat-accordion *ngIf="menuData.Menu" multi>
+    <ng-container
+      *ngFor="let menu of menuData.Menu; let i = index; let last = last"
+    >
+      <mat-expansion-panel [expanded]="i == 0">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ menu.title }} ({{ menu.Dishes.length }})
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-container *ngFor="let dish of menu.Dishes; let j = last">
+          <div class="dish">
+            <div class="dish__details">
+              <div
+                [ngClass]="{ veg: dish.isVeg, nonVeg: !dish.isVeg }"
+                *ngIf="dish.isVeg"
+              ></div>
+              <div class="dish__details__name">{{ dish.name }}</div>
+              <div class="dish__details__price">{{ dish.price }}</div>
+              <div class="dish__details__description">
+                {{ dish.description }}
+              </div>
+            </div>
+            <div class="dish__image">
+              <img src="assets/test_food_image.webp" alt="{{ dish.name }}" />
+              <div class="add-btn">
+                <app-add-item-btn
+                  [counter]="dish.selected"
+                  (itemAdd)="modifyCart('add', dish)"
+                  (itemRemove)="modifyCart('remove', dish)"
+                ></app-add-item-btn>
+              </div>
+            </div>
+          </div>
+          <div class="divider" *ngIf="!j"></div>
+        </ng-container>
+      </mat-expansion-panel>
+      <div class="section-divider" *ngIf="!last"></div>
+    </ng-container>
+  </mat-accordion>
+</div>
+<div class="bottom-btn">
+  <div class="bottom-btn__container">
+    <!-- <button class="browse-menu">Browse Menu</button> -->
+    <!-- <button
+      [matMenuTriggerFor]="foodMenu"
+      aria-label="Browse Menu"
+      class="browse-menu"
+    >
+      Browse Menu
+    </button> -->
+    <div class="view-cart" *ngIf="itemSelected.count">
+      <div>
+        {{ itemSelected.count }} item |
+        <span class="price">{{ itemSelected.price }}</span>
+      </div>
+      <div class="open" [routerLink]="['/cart']">VIEW CART</div>
+    </div>
+  </div>
+</div>
+

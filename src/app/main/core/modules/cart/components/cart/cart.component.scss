@@ -1,0 +1,43 @@
+.cart {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px 0;
+  width: 100%;
+  @media only screen and (max-width: 800px) {
+    padding: 20px 10px;
+    width: calc(100% - 20px);
+  }
+  &__description {
+    .title {
+      font-size: 1.43rem;
+      font-weight: 600;
+      color: #282c3f;
+      margin-bottom: 8px;
+      text-transform: capitalize;
+    }
+    .area-name {
+      font-size: 0.93rem;
+      color: #7e808c;
+    }
+  }
+  &-item {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+    .count {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      .price {
+        width: 50px;
+        text-align: right;
+        &::before {
+          content: "\20B9";
+          margin-right: 0.1rem;
+        }
+      }
+    }
+  }
+}
