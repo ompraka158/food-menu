@@ -1,4 +1,4 @@
-<div class="restaurant" (click)="selectRestaurant(menuData)">
+<div class="restaurant" (click)="selectRestaurant(menuData)" *ngIf="menuData">
   <div class="restaurant__image">
     <img src="assets/test_food_image.webp" alt="{{ menuData.About.Name }}" />
   </div>
@@ -21,7 +21,7 @@
     >
       Browse Menu
     </button> -->
-    <div class="view-cart" *ngIf="itemSelected.count">
+    <div class="view-cart" *ngIf="itemSelected?.count">
       <div class="description">
         <img src="assets/test_food_image.webp" alt="" />
         <div class="name">

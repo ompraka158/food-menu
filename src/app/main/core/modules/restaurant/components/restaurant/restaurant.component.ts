@@ -52,7 +52,7 @@ export class RestaurantComponent {
     let count = 0;
     let price = 0;
     if (this.selectedMenu)
-      this.selectedMenu.Menu.forEach((menu: any) => {
+      this.selectedMenu.Menu?.forEach((menu: any) => {
         menu.Dishes.forEach((dish: any) => {
           count += dish.selected;
           price += dish.selected * dish.price;
