@@ -1,0 +1,10 @@
+<div class="btn">
+  <div class="counter">
+    <ng-container *ngIf="counter; else addBtn">
+      <div class="counter__remove" (click)="removeItem()">-</div>
+      <div class="counter__count">{{ counter }}</div>
+      <div class="counter__add" (click)="addItem()">+</div>
+    </ng-container>
+		<ng-template #addBtn><div class="counter__empty" (click)="addItem()">ADD</div></ng-template>
+  </div>
+</div>
