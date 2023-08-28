@@ -15,7 +15,8 @@ export class CartComponent {
   ngOnInit() {
     this.$subscription.add(
       this.cartService.$currentMenu.subscribe((res) => {
-        this.cartData = res;
+        this.cartData =
+          res || JSON.parse(localStorage.getItem('selectedRestaurant') || '');
       })
     );
   }
@@ -23,6 +24,7 @@ export class CartComponent {
   modifyCart(mode: string, item: any) {
     if (mode == 'add') item.selected += 1;
     else item.selected -= 1;
+    localStorage.setItem('selectedRestaurant', JSON.stringify(this.cartData));
     this.cartService.$currentMenu.next(this.cartData);
   }
 

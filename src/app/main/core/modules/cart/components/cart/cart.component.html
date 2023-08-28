@@ -1,4 +1,4 @@
-<div class="cart" *ngIf="cartData">
+<div class="cart" *ngIf="itemSelected.count; else emptyCart">
   <div class="cart__description">
     <div class="title">{{ cartData.About.Name }}</div>
     <div class="area-name">{{ cartData.About.AreaName }}</div>
@@ -20,4 +20,13 @@
       </div>
     </ng-container>
   </ng-container>
+  <div class="bill-total">
+    Total Amount:
+    <span class="price">
+      {{ itemSelected.price }}
+    </span>
+  </div>
 </div>
+<ng-template #emptyCart>
+  <div class="empty">There are no items in the cart</div>
+</ng-template>

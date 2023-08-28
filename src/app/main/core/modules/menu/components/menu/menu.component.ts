@@ -11,10 +11,7 @@ import { Subscription } from 'rxjs';
 export class MenuComponent {
   menuData: any;
   $subscription = new Subscription();
-  constructor(
-    private menuService: MenuService,
-    private cartService: CartService
-  ) {}
+  constructor(private cartService: CartService) {}
   ngOnInit() {
     this.listenForMenuData();
   }
@@ -22,39 +19,24 @@ export class MenuComponent {
   listenForMenuData() {
     this.$subscription.add(
       this.cartService.$currentMenu.subscribe((res) => {
-        if (!res) {
-          this.getMenuList();
-        } else {
-          this.menuData = res;
-          this.menuData.Menu.forEach((menu: any) => {
-            menu.Dishes.forEach((dish: any) => {
-              dish.selected = dish.selected || 0;
-            });
+        if (!res)
+          this.menuData = JSON.parse(
+            localStorage.getItem('selectedRestaurant') || ''
+          );
+        else this.menuData = res;
+        this.menuData.Menu.forEach((menu: any) => {
+          menu.Dishes.forEach((dish: any) => {
+            dish.selected = dish.selected || 0;
           });
-        }
+        });
       })
     );
-  }
-
-  getMenuList() {
-    if (!localStorage.getItem('menu'))
-      this.$subscription.add(
-        this.menuService.getMenuList().subscribe((response) => {
-          localStorage.setItem('menu', JSON.stringify(response.data));
-          this.cartService.$currentMenu.next(this.menuData);
-        })
-      );
-    else {
-      this.menuData = JSON.parse(localStorage.getItem('menu') || '{}');
-      this.cartService.$currentMenu.next(
-        JSON.parse(localStorage.getItem('menu') || '{}')
-      );
-    }
   }
 
   modifyCart(mode: string, item: any) {
     if (mode == 'add') item.selected += 1;
     else item.selected -= 1;
+    localStorage.setItem('selectedRestaurant', JSON.stringify(this.menuData));
     this.cartService.$currentMenu.next(this.menuData);
   }
 

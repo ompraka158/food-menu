@@ -1,0 +1,41 @@
+<div class="restaurant" (click)="selectRestaurant(menuData)">
+  <div class="restaurant__image">
+    <img src="assets/test_food_image.webp" alt="{{ menuData.About.Name }}" />
+  </div>
+  <div class="restaurant__description">
+    <div class="title">{{ menuData.About.Name }}</div>
+    <div class="rating">
+      <div></div>
+      <div>{{ menuData.About.Ratings }}</div>
+    </div>
+    <div class="sub-title">{{ menuData.About.Cuisines.join(", ") }}</div>
+  </div>
+</div>
+<div class="bottom-btn">
+  <div class="bottom-btn__container">
+    <!-- <button class="browse-menu">Browse Menu</button> -->
+    <!-- <button
+      [matMenuTriggerFor]="foodMenu"
+      aria-label="Browse Menu"
+      class="browse-menu"
+    >
+      Browse Menu
+    </button> -->
+    <div class="view-cart" *ngIf="itemSelected.count">
+      <div class="description">
+        <img src="assets/test_food_image.webp" alt="" />
+        <div class="name">
+          <div>{{ selectedMenu.About.Name }}</div>
+          <div class="open-menu" [routerLink]="['/menu']">View Full Menu</div>
+        </div>
+      </div>
+      <div class="open" [routerLink]="['/cart']">
+        <div>
+          {{ itemSelected.count }} item |
+          <span class="price">{{ itemSelected.price }}</span>
+        </div>
+        <div>CHECKOUT</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,111 @@
+.restaurant {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  @media only screen and (max-width: 600px) {
+    flex-direction: row;
+  }
+  &:hover {
+    transform: scale(0.95);
+  }
+  &__image {
+    border-radius: 16px;
+    overflow: hidden;
+    width: 200px;
+    height: 138px;
+    @media only screen and (max-width: 600px) {
+      width: 120px;
+      height: 90px;
+			padding: 15px;
+    }
+    filter: drop-shadow(rgba(0, 0, 0, 0.1) 0px 2px 8px);
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+  }
+  &__description {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+		justify-content: center;
+    .title {
+      font-size: 0.93rem;
+      font-weight: 600;
+      color: #282c3f;
+      margin-bottom: 8px;
+      text-transform: capitalize;
+    }
+    .sub-title {
+      font-size: 0.93rem;
+      color: #7e808c;
+      height: calc(0.93rem + 2px);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 4px;
+      white-space: nowrap;
+    }
+    .area-name {
+      font-size: 0.93rem;
+      color: #7e808c;
+    }
+  }
+}
+
+.bottom-btn {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2000;
+  width: 100%;
+  @media only screen and (min-width: 800px) {
+    width: 800px;
+    margin: 0 auto;
+  }
+  &__container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    .view-cart {
+      width: calc(100% - 32px);
+			box-shadow: 0 0 3px 3px #dedfe4e1;
+			border-radius: 15px 15px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+			.description {
+				display: flex;
+				gap: 15px;
+				img {
+					border-radius: 50%;
+					height: 35px;
+					width: 35px;
+					object-fit: cover;
+				}
+			}
+      .open {
+				border-radius: 10px;
+				color: #fff;
+				background-color: #60b246;
+				padding: 10px 15px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.price {
+  &::before {
+    content: "\20B9";
+    margin-right: 0.1rem;
+  }
+}
+
+.open-menu {
+	color: #7e808c;
+	text-decoration: underline;
+	cursor: pointer;
+}
