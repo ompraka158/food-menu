@@ -35,6 +35,8 @@ export class RestaurantComponent {
         this.menuService.getMenuList().subscribe((response) => {
           localStorage.setItem('menu', JSON.stringify(response.data));
           this.menuData = response;
+        }, ({error}) => {
+          alert('API endpoint limit exceed. Create a new API Key!!!')
         })
       );
     else {
